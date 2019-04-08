@@ -1,0 +1,60 @@
+{
+ "name": "currency-converter",
+ "version": "1.0.0",
+ "description": "Simple currency converter build with React & Next.js",
+ "main": "index.js",
+ "scripts": {
+  "dev": "next",
+  "build": "next build",
+  "start": "next start",
+  "test": "xo && stylelint 'pages/**/*.js'"
+ },
+ "author": "Antoni Kepinski <a@kepinski.me> (https://kepinski.me)",
+ "license": "MIT",
+ "dependencies": {
+  "@zeit/next-css": "^1.0.1",
+  "core-js": "^3.0.1",
+  "formik": "^1.5.2",
+  "modern-normalize": "^0.5.0",
+  "money": "^0.2.0",
+  "next": "^8.0.5-canary.25",
+  "next-offline": "^3.3.7",
+  "react": "^16.8.6",
+  "react-dom": "^16.8.6",
+  "styled-components": "^4.2.0",
+  "ttl-localstorage": "^1.3.1",
+  "yup": "^0.27.0"
+ },
+ "devDependencies": {
+  "@babel/core": "^7.4.3",
+  "@babel/preset-env": "^7.4.3",
+  "babel-eslint": "^10.0.1",
+  "babel-plugin-styled-components": "^1.10.0",
+  "eslint-config-xo-react": "^0.19.0",
+  "eslint-plugin-react": "^7.12.4",
+  "eslint-plugin-react-hooks": "^1.6.0",
+  "stylelint": "^9.10.1",
+  "stylelint-config-recommended": "^2.1.0",
+  "stylelint-config-styled-components": "^0.1.1",
+  "stylelint-processor-styled-components": "^1.6.0",
+  "xo": "^0.24.0"
+ },
+ "xo": {
+  "nodeVersion": ">=10",
+  "parser": "babel-eslint",
+  "envs": [
+   "node",
+   "browser"
+  ],
+  "extends": "xo-react",
+  "settings": {
+   "react": {
+    "version": "16.8"
+   }
+  },
+  "rules": {
+   "import/no-unassigned-import": "off",
+   "react/jsx-child-element-spacing": "off"
+  }
+ }
+}
