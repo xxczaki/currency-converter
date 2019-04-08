@@ -14,6 +14,7 @@
 - Built with modern technologies
 - Does not require any API keys
 - Uses plain `fetch` to fetch data
+- Uses the open-source [Exchange Rates API](http://exchangeratesapi.io)
 - Caches API results for 1 hour
 - Works offline
 - Uses the new Next.js 8 `serverless` target
