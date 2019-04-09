@@ -31,7 +31,7 @@ const Input = () => (
 	<label>
         Amount
 		<br/>
-		<StyledInput type="number" inputMode="numeric" pattern="[0-9]*" name="amount" placeholder="Amount"/>
+		<StyledInput type="number" pattern="[0-9]*" name="amount" placeholder="Amount"/>
 		<ErrorMessage style={{color: '#e53935'}} name="amount" component="div"/>
 	</label>
 );
