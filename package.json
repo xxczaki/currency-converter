@@ -17,7 +17,7 @@
   "formik": "^1.5.2",
   "modern-normalize": "^0.5.0",
   "money": "^0.2.0",
-  "next": "^8.0.5-canary.25",
+  "next": "^8.0.5-canary.27",
   "next-offline": "^3.3.7",
   "react": "^16.8.6",
   "react-dom": "^16.8.6",
