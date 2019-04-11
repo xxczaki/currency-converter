@@ -27,6 +27,8 @@ const ConverterSchema = Yup.object().shape({
 const Converter = () => {
 	const [result, setResult] = useState('');
 
+	const resetState = () => setResult('');
+
 	return (
 		<div>
 			<Formik
@@ -44,7 +46,7 @@ const Converter = () => {
 						if (data === null) {
 							const request = await fetch(`https://api.exchangeratesapi.io/latest?base=${values.from}`);
 							const response = await request.json();
-							LocalStorage.put('exchangeRates', response);
+							await LocalStorage.put('exchangeRates', response);
 
 							money.base = response.base;
 							money.rates = response.rates;
@@ -74,8 +76,11 @@ const Converter = () => {
 						<Button type="submit" disabled={isSubmitting}>
 							Convert
 						</Button>
-						<Reset type="reset" onClick={() => resetForm()}>
-							X
+						<Reset type="reset" onClick={() => {
+							resetForm();
+							resetState();
+						}}
+						>X
 						</Reset>
 						<br/>
 						<br/>
