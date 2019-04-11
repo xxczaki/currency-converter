@@ -8,18 +8,18 @@ const Button = styled.button`
     font-size: 16px;
     cursor: pointer;
     color: #fff;
-    background-color: #558B2F;
+    background-color: #33691E;
     outline: none;
     user-select: none;
     background-position: center;
     transition: background 0.8s;
 
     &:hover {
-        background: #33691E radial-gradient(circle, transparent 1%, #33691E 1%) center/15000%;
+        background: #1B5E20 radial-gradient(circle, transparent 1%, #1B5E20 1%) center/15000%;
     }
 
     &:active {
-        background-color: #1B5E20;
+        background-color: #0A5E30;
         background-size: 100%;
         transition: background 0s;
     }
