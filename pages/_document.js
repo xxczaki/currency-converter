@@ -29,8 +29,7 @@ export default class MyDocument extends Document {
 			<html lang="en">
 				<Head>
 					<meta charSet="utf-8"/>
-					<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-					<meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
+					<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 					<meta name="description" content="Simple currency converter, that works offline!"/>
 					<meta name="theme-color" content="#212121"/>
 					<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
