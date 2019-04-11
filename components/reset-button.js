@@ -9,18 +9,18 @@ const Reset = styled.button`
     font-size: 16px;
     cursor: pointer;
     color: #fff;
-    background-color: #ef5350;
+    background-color: #c62828;
     outline: none;
     user-select: none;
     background-position: center;
     transition: background 0.8s;
 
     &:hover {
-        background: #f44336 radial-gradient(circle, transparent 1%, #f44336 1%) center/15000%;
+        background: #b71c1c radial-gradient(circle, transparent 1%, #b71c1c 1%) center/15000%;
     }
 
     &:active {
-        background-color: #e53935;
+        background-color: #d50000;
         background-size: 100%;
         transition: background 0s;
     }
