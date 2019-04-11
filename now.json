@@ -1,7 +1,14 @@
 {
     "version": 2,
     "alias": ["currency-converter.now.sh"],
-    "routes": [	
+    "routes": [
+      {
+        "src": "/", 
+        "headers": {
+          "cache-control": "s-maxage=2628000, maxage=0",
+          "accept-encoding": "br"
+        }
+      },
       {	
         "src": "^/service-worker.js$",	
         "dest": "/_next/static/service-worker.js",
