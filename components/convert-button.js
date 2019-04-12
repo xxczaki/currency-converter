@@ -19,7 +19,7 @@ const Button = styled.button`
     }
 
     &:active {
-        background-color: #0A5E30;
+        background-color: #0C290E;
         background-size: 100%;
         transition: background 0s;
     }
