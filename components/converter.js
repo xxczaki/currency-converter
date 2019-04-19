@@ -39,7 +39,7 @@ const Converter = () => {
 					setSubmitting(false);
 
 					localforage.getItem('exchangeRates', async (error, value) => {
-						if (value === null || new Date().toISOString().slice(0, 10) !== value.date) {
+						if (value === null) {
 							const request = await fetch(`https://api.exchangeratesapi.io/latest?base=${values.from}`);
 							const response = await request.json();
 							await localforage.setItem('exchangeRates', response, error => {
