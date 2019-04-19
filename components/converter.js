@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
-import localforage from 'localforage';
+import {set, get} from 'idb-keyval';
 import money from 'money';
 import * as Yup from 'yup';
 
@@ -38,15 +38,11 @@ const Converter = () => {
 				onSubmit={(values, {setSubmitting}) => {
 					setSubmitting(false);
 
-					localforage.getItem('exchangeRates', async (error, value) => {
-						if (value === null) {
+					get('exchangeRates').then(async val => {
+						if (val === undefined) {
 							const request = await fetch(`https://api.exchangeratesapi.io/latest?base=${values.from}`);
 							const response = await request.json();
-							await localforage.setItem('exchangeRates', response, error => {
-								if (error) {
-									console.log(error);
-								}
-							});
+							set('exchangeRates', response);
 
 							money.base = response.base;
 							money.rates = response.rates;
@@ -55,8 +51,8 @@ const Converter = () => {
 
 							setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
 						} else {
-							money.base = value.base;
-							money.rates = value.rates;
+							money.base = val.base;
+							money.rates = val.rates;
 
 							const result = money.convert(values.amount, {from: values.from, to: values.to}).toFixed(3);
 
