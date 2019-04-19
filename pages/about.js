@@ -32,7 +32,7 @@ const Index = () => {
 	return (
 		<Container>
 			<Header>About</Header>
-			<p><Link prefetch href="/"><ExternalLink>[Home]</ExternalLink></Link> &bull; <Link prefetch href="/"><ExternalLink>[About]</ExternalLink></Link></p>
+			<p><Link prefetch href="/"><ExternalLink>[Home]</ExternalLink></Link> &bull; <Link prefetch href="/about"><ExternalLink>[About]</ExternalLink></Link></p>
 			<br/>
 			<Information/>
 			<GlobalStyle/>
