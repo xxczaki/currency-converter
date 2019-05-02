@@ -2,24 +2,12 @@ import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
 import {set, get} from 'idb-keyval';
 import money from 'money';
-import * as Yup from 'yup';
 
 import Input from './input';
 import From from './from';
 import To from './to';
 import Button from './convert-button';
 import Reset from './reset-button';
-
-// Validation
-const ConverterSchema = Yup.object().shape({
-	amount: Yup.number()
-		.required('Required!')
-		.positive('Amount must be a positive number!'),
-	from: Yup.string()
-		.required('Required!'),
-	to: Yup.string()
-		.required('Required!')
-});
 
 const Converter = () => {
 	const [result, setResult] = useState('');
@@ -34,7 +22,6 @@ const Converter = () => {
 					from: '',
 					to: ''
 				}}
-				validationSchema={ConverterSchema}
 				onSubmit={(values, {setSubmitting}) => {
 					setSubmitting(false);
 

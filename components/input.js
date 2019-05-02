@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {ErrorMessage, FastField} from 'formik';
+import {FastField} from 'formik';
 
 const StyledInput = styled(FastField)`
     cursor: pointer;
@@ -31,8 +31,7 @@ const Input = () => (
 	<label>
         Amount
 		<br/>
-		<StyledInput type="number" pattern="[0-9]*" name="amount" placeholder="Amount"/>
-		<ErrorMessage style={{color: '#e53935'}} name="amount" component="div"/>
+		<StyledInput type="number" min="1" pattern="[0-9]*" name="amount" placeholder="Amount" required/>
 	</label>
 );
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {ErrorMessage, FastField} from 'formik';
+import {FastField} from 'formik';
 
 const StyledTo = styled(FastField)`
     cursor: pointer;
@@ -31,7 +31,7 @@ const To = () => (
 	<label>
         To
 		<br/>
-		<StyledTo name="to" component="select" placeholder="To">
+		<StyledTo name="to" component="select" placeholder="To" required>
 			<option value="" label="Select"/>
 			<option value="EUR">🇪🇺 Euro</option>
 			<option value="USD">🇺🇸 US dollar</option>
@@ -67,7 +67,6 @@ const To = () => (
 			<option value="THB">🇹🇭 Thai baht</option>
 			<option value="ZAR">🇿🇦 South African rand</option>
 		</StyledTo>
-		<ErrorMessage style={{color: '#e53935'}} name="to" component="div"/>
 	</label>
 );
 
