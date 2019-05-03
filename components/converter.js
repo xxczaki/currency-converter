@@ -15,7 +15,7 @@ const Converter = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		
+
 		const {values} = formState;
 
 		get('exchangeRates').then(async val => {
