@@ -31,7 +31,7 @@ const Input = () => (
 	<label>
         Amount
 		<br/>
-		<StyledInput type="number" min="1" pattern="[0-9]*" name="amount" placeholder="Amount" required/>
+		<StyledInput type="number" min="1" step="0.1" lang="nb" pattern="[0-9]*" name="amount" placeholder="Amount" required/>
 	</label>
 );
 
