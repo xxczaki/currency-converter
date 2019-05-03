@@ -1,8 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
-import {FastField} from 'formik';
 
-const StyledInput = styled(FastField)`
+const Input = styled.input`
     cursor: pointer;
     color: #fff;
     background-color: #474747;
@@ -26,13 +24,5 @@ const StyledInput = styled(FastField)`
         transition: all 0.2s ease;
     }
 `;
-
-const Input = () => (
-	<label>
-        Amount
-		<br/>
-		<StyledInput type="number" min="1" pattern="[0-9]*" name="amount" placeholder="Amount" required/>
-	</label>
-);
 
 export default Input;
