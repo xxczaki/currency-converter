@@ -1,30 +1,36 @@
 import React from 'react';
 import Document, {Head, Main, NextScript} from 'next/document';
-import {ServerStyleSheet} from 'styled-components';
+import {createGlobalStyle, ServerStyleSheet} from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+	body {
+		background-color: #212121;
+		font-family: monospace;
+		margin: auto;
+		font-size: 16px;
+		width: 80%;
+		padding-top: 50px;
+		padding-bottom: 100px;
+		color: #fff;
+		-webkit-font-smoothing: antialiased;
+		-webkit-touch-callout: none;
+		text-rendering: optimizeSpeed;
+	}
+`;
 
 export default class MyDocument extends Document {
-	static async getInitialProps(ctx) {
+	static getInitialProps({renderPage}) {
 		const sheet = new ServerStyleSheet();
-		const originalRenderPage = ctx.renderPage;
 
-		try {
-			ctx.renderPage = () =>
-				originalRenderPage({
-					enhanceApp: App => props => sheet.collectStyles(<App {...props}/>)
-				});
+		const page = renderPage(Component => props => sheet.collectStyles(<Component {...props}/>));
 
-			const initialProps = await Document.getInitialProps(ctx);
-
-			return {
-				...initialProps,
-				styles: <>{initialProps.styles}{sheet.getStyleElement()}</>
-			};
-		} finally {
-			sheet.seal();
-		}
+		const styleElements = sheet.getStyleElement();
+		return {...page, styleElements};
 	}
 
 	render() {
+		const {styleElements} = this.props;
+
 		return (
 			<html lang="en">
 				<Head>
@@ -43,11 +49,12 @@ export default class MyDocument extends Document {
 					<link rel="apple-touch-startup-image" href="static/splashscreens/ipad_splash.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"/>
 					<link rel="apple-touch-startup-image" href="static/splashscreens/ipadpro1_splash.png" media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"/>
 					<link rel="apple-touch-startup-image" href="static/splashscreens/ipadpro2_splash.png" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"/>
-					{this.props.styleTags}
+					{styleElements}
 				</Head>
 				<body>
 					<Main/>
 					<NextScript/>
+					<GlobalStyle/>
 				</body>
 			</html>
 		);
