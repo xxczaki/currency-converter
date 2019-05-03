@@ -19,18 +19,28 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default class MyDocument extends Document {
-	static getInitialProps({renderPage}) {
+	static async getInitialProps(ctx) {
 		const sheet = new ServerStyleSheet();
+		const originalRenderPage = ctx.renderPage;
 
-		const page = renderPage(Component => props => sheet.collectStyles(<Component {...props}/>));
+		try {
+			ctx.renderPage = () =>
+				originalRenderPage({
+					enhanceApp: App => props => sheet.collectStyles(<App {...props}/>)
+				});
 
-		const styleElements = sheet.getStyleElement();
-		return {...page, styleElements};
+			const initialProps = await Document.getInitialProps(ctx);
+
+			return {
+				...initialProps,
+				styles: <>{initialProps.styles}{sheet.getStyleElement()}</>
+			};
+		} finally {
+			sheet.seal();
+		}
 	}
 
 	render() {
-		const {styleElements} = this.props;
-
 		return (
 			<html lang="en">
 				<Head>
@@ -49,7 +59,7 @@ export default class MyDocument extends Document {
 					<link rel="apple-touch-startup-image" href="static/splashscreens/ipad_splash.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"/>
 					<link rel="apple-touch-startup-image" href="static/splashscreens/ipadpro1_splash.png" media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"/>
 					<link rel="apple-touch-startup-image" href="static/splashscreens/ipadpro2_splash.png" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"/>
-					{styleElements}
+					{this.props.styleTags}
 				</Head>
 				<body>
 					<Main/>
