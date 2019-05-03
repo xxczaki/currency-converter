@@ -52,7 +52,7 @@ const Converter = () => {
 				<label>
         Amount
 					<br/>
-					<Input required {...number('amount')} type="number" min="1" pattern="[0-9]*" name="amount" placeholder="Amount"/>
+					<Input required {...number('amount')} type="number" min="1" step="any" pattern="[0-9]*" name="amount" placeholder="Amount"/>
 				</label>
 				<br/>
 				<label>
