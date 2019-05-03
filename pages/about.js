@@ -22,17 +22,13 @@ const GlobalStyle = createGlobalStyle`
         -webkit-touch-callout: none;
         text-rendering: optimizeSpeed;
     }
-
-    p {
-        margin: 2px;
-    }
 `;
 
 const Index = () => {
 	return (
 		<Container>
 			<Header>About</Header>
-			<p><Link prefetch href="/"><ExternalLink>[Home]</ExternalLink></Link> &bull; <Link prefetch href="/about"><ExternalLink>[About]</ExternalLink></Link></p>
+			<p style={{margin: '2px'}}><Link prefetch href="/"><ExternalLink>[Home]</ExternalLink></Link> &bull; <Link prefetch href="/about"><ExternalLink>[About]</ExternalLink></Link></p>
 			<br/>
 			<Information/>
 			<GlobalStyle/>

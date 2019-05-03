@@ -1,22 +1,6 @@
 import React from 'react';
 import Document, {Head, Main, NextScript} from 'next/document';
-import {createGlobalStyle, ServerStyleSheet} from 'styled-components';
-
-const GlobalStyle = createGlobalStyle`
-	body {
-		background-color: #212121;
-		font-family: monospace;
-		margin: auto;
-		font-size: 16px;
-		width: 80%;
-		padding-top: 50px;
-		padding-bottom: 100px;
-		color: #fff;
-		-webkit-font-smoothing: antialiased;
-		-webkit-touch-callout: none;
-		text-rendering: optimizeSpeed;
-	}
-`;
+import {ServerStyleSheet} from 'styled-components';
 
 export default class MyDocument extends Document {
 	static async getInitialProps(ctx) {
@@ -64,7 +48,6 @@ export default class MyDocument extends Document {
 				<body>
 					<Main/>
 					<NextScript/>
-					<GlobalStyle/>
 				</body>
 			</html>
 		);
