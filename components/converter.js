@@ -59,7 +59,7 @@ const Converter = () => {
         From
 					<br/>
 					<From required {...select('from')}>
-						<option value="" label="Select"/>
+						<option value="">Select</option>
 						<option value="EUR">🇪🇺 Euro</option>
 						<option value="USD">🇺🇸 US dollar</option>
 						<option value="JPY">🇯🇵 Japanese yen</option>
@@ -100,7 +100,7 @@ const Converter = () => {
         To
 					<br/>
 					<To required {...select('to')}>
-						<option value="" label="Select"/>
+						<option value="">Select</option>
 						<option value="EUR">🇪🇺 Euro</option>
 						<option value="USD">🇺🇸 US dollar</option>
 						<option value="JPY">🇯🇵 Japanese yen</option>
