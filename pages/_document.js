@@ -14,10 +14,14 @@ export default class MyDocument extends Document {
 				});
 
 			const initialProps = await Document.getInitialProps(ctx);
-
 			return {
 				...initialProps,
-				styles: <>{initialProps.styles}{sheet.getStyleElement()}</>
+				styles: (
+					<>
+						{initialProps.styles}
+						{sheet.getStyleElement()}
+					</>
+				)
 			};
 		} finally {
 			sheet.seal();
@@ -43,7 +47,6 @@ export default class MyDocument extends Document {
 					<link rel="apple-touch-startup-image" href="static/splashscreens/ipad_splash.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"/>
 					<link rel="apple-touch-startup-image" href="static/splashscreens/ipadpro1_splash.png" media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"/>
 					<link rel="apple-touch-startup-image" href="static/splashscreens/ipadpro2_splash.png" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"/>
-					{this.props.styleTags}
 				</Head>
 				<body>
 					<Main/>
