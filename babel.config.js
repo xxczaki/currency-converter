@@ -11,6 +11,7 @@ const presets = [
 
 const plugins = [
 	['babel-plugin-styled-components', {
+		ssr: true,
 		pure: true
 	}]
 ];
