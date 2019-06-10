@@ -4,8 +4,7 @@ import {set, get} from 'idb-keyval';
 import money from 'money';
 
 import Input from './input';
-import From from './from';
-import To from './to';
+import Select from './select';
 import Button from './convert-button';
 import Reset from './reset-button';
 
@@ -58,7 +57,7 @@ const Converter = () => {
 				<label>
         From
 					<br/>
-					<From required {...select('from')}>
+					<Select required {...select('from')}>
 						<option value="">Select</option>
 						<option value="EUR">🇪🇺 Euro</option>
 						<option value="USD">🇺🇸 US dollar</option>
@@ -93,13 +92,13 @@ const Converter = () => {
 						<option value="SGD">🇸🇬 Singapore dollar</option>
 						<option value="THB">🇹🇭 Thai baht</option>
 						<option value="ZAR">🇿🇦 South African rand</option>
-					</From>
+					</Select>
 				</label>
 				<br/>
 				<label>
         To
 					<br/>
-					<To required {...select('to')}>
+					<Select required {...select('to')}>
 						<option value="">Select</option>
 						<option value="EUR">🇪🇺 Euro</option>
 						<option value="USD">🇺🇸 US dollar</option>
@@ -134,7 +133,7 @@ const Converter = () => {
 						<option value="SGD">🇸🇬 Singapore dollar</option>
 						<option value="THB">🇹🇭 Thai baht</option>
 						<option value="ZAR">🇿🇦 South African rand</option>
-					</To>
+					</Select>
 				</label>
 				<br/>
 				<Button type="submit">

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const From = styled.select`
+const Select = styled.select`
     cursor: pointer;
     color: #fff;
     background-color: #474747;
@@ -25,4 +25,4 @@ const From = styled.select`
     }
 `;
 
-export default From;
+export default Select;
