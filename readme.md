@@ -34,8 +34,6 @@ $ npm run dev
 $ npm run build
 ```
 
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/xxczaki/currency-converter)
-
 
 ## License
 
