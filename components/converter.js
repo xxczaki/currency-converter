@@ -14,16 +14,18 @@ const Converter = () => {
 
 	useEffect(() => {
 		get('exchangeRates').then(async val => {
+			const cacheTimestamp = await get('cc-timestamp');
+			const currentTimestamp = await Math.floor(Date.now() / 1000);
+
 			// Check whether cached data exists and if it does, whether it's older than one week
-			if (val === undefined || (await get('cc-timestamp') - Math.floor(Date.now() / 1000)) < -604800) {
-				// Purge whole database
+			if (val === undefined || cacheTimestamp === undefined || (cacheTimestamp - currentTimestamp) < -604800) {
 				clear();
 
 				const request = await fetch('https://api.exchangeratesapi.io/latest');
 				const response = await request.json();
 
 				set('exchangeRates', response);
-				set('cc-timestamp', Math.floor(Date.now() / 1000));
+				set('cc-timestamp', currentTimestamp);
 			} else {
 				console.log('Using cached data');
 			}
