@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useFormState} from 'react-use-form-state';
-import {set, get} from 'idb-keyval';
+import {set, get, clear} from 'idb-keyval';
 import money from 'money';
 
 import Input from './input';
@@ -12,31 +12,38 @@ const Converter = () => {
 	const [formState, {number, select}] = useFormState();
 	const [result, setResult] = useState('');
 
+	useEffect(() => {
+		get('exchangeRates').then(async val => {
+			// Check whether cached data exists and if it does, whether it's older than one week
+			if (val === undefined || (await get('cc-timestamp') - Math.floor(Date.now() / 1000)) < -604800) {
+				// Purge whole database
+				clear();
+
+				const request = await fetch('https://api.exchangeratesapi.io/latest');
+				const response = await request.json();
+
+				set('exchangeRates', response);
+				set('cc-timestamp', Math.floor(Date.now() / 1000));
+			} else {
+				console.log('Using cached data');
+			}
+		});
+	}, []);
+
 	const handleSubmit = e => {
 		e.preventDefault();
 
 		const {values} = formState;
 
 		get('exchangeRates').then(async val => {
-			if (val === undefined) {
-				const request = await fetch(`https://api.exchangeratesapi.io/latest?base=${values.from}`);
-				const response = await request.json();
-				set('exchangeRates', response);
+			money.base = values.from;
+			money.rates = val.rates;
 
-				money.base = response.base;
-				money.rates = response.rates;
+			const result = money.convert(values.amount, {from: values.from, to: values.to}).toFixed(3);
 
-				const result = money.convert(values.amount, {from: values.from, to: values.to}).toFixed(3);
-
-				setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
-			} else {
-				money.base = val.base;
-				money.rates = val.rates;
-
-				const result = money.convert(values.amount, {from: values.from, to: values.to}).toFixed(3);
-
-				setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
-			}
+			setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
+		}).catch(error => {
+			setResult(`Something went wrong: ${error}`);
 		});
 	};
 
