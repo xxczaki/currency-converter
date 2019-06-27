@@ -38,7 +38,7 @@ const Converter = () => {
 		const {values} = formState;
 
 		get('exchangeRates').then(async val => {
-			money.base = values.from;
+			money.base = val.base;
 			money.rates = val.rates;
 
 			const result = money.convert(values.amount, {from: values.from, to: values.to}).toFixed(3);
