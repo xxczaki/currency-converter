@@ -68,31 +68,28 @@ const Converter = () => {
 					<br/>
 					<Select required {...select('from')}>
 						<option value="">Select</option>
-						<option value="EUR">🇪🇺 Euro</option>
-						<option value="USD">🇺🇸 US dollar</option>
-						<option value="JPY">🇯🇵 Japanese yen</option>
-						<option value="BGN">🇧🇬 Bulgarian lev</option>
-						<option value="CZK">🇨🇿 Czech koruna</option>
-						<option value="DKK">🇩🇰 Danish krone</option>
-						<option value="GBP">🇬🇧 Pound sterling</option>
-						<option value="HUF">🇭🇺 Hungarian forint</option>
-						<option value="PLN">🇵🇱 Polish zloty</option>
-						<option value="RON">🇷🇴 Romanian leu</option>
-						<option value="SEK">🇸🇪 Swedish krona</option>
-						<option value="CHF">🇨🇭 Swiss franc</option>
-						<option value="ISK">🇮🇸 Icelandic krona</option>
-						<option value="NOK">🇳🇴 Norwegian krone</option>
-						<option value="HRK">🇭🇷 Croatian kuna</option>
-						<option value="RUB">🇷🇺 Russian rouble</option>
-						<option value="TRY">🇹🇷 Turkish lira</option>
 						<option value="AUD">🇦🇺 Australian dollar</option>
 						<option value="BRL">🇧🇷 Brazilian real</option>
+						<option value="BGN">🇧🇬 Bulgarian lev</option>
 						<option value="CAD">🇨🇦 Canadian dollar</option>
 						<option value="CNY">🇨🇳 Chinese yuan</option>
+						<option value="HRK">🇭🇷 Croatian kuna</option>
+						<option value="CZK">🇨🇿 Czech koruna</option>
+						<option value="DKK">🇩🇰 Danish krone</option>
+						<option value="EUR">🇪🇺 Euro</option>
+						<option value="USD">🇺🇸 US dollar</option>
 						<option value="HKD">🇭🇰 Hong Kong dollar</option>
+						<option value="HUF">🇭🇺 Hungarian forint</option>
+						<option value="ISK">🇮🇸 Icelandic krona</option>
+						<option value="INR">🇮🇳 Indian rupee</option>
 						<option value="IDR">🇮🇩 Indonesian rupiah</option>
 						<option value="ILS">🇮🇱 Israeli shekel</option>
-						<option value="INR">🇮🇳 Indian rupee</option>
+						<option value="JPY">🇯🇵 Japanese yen</option>
+						<option value="NOK">🇳🇴 Norwegian krone</option>
+						<option value="PLN">🇵🇱 Polish zloty</option>
+						<option value="GBP">🇬🇧 Pound sterling</option>
+						<option value="RON">🇷🇴 Romanian leu</option>
+						<option value="RUB">🇷🇺 Russian rouble</option>
 						<option value="KRW">🇰🇷 South Korean won</option>
 						<option value="MXN">🇲🇽 Mexican peso</option>
 						<option value="MYR">🇲🇾 Malaysian ringgit</option>
@@ -101,6 +98,9 @@ const Converter = () => {
 						<option value="SGD">🇸🇬 Singapore dollar</option>
 						<option value="THB">🇹🇭 Thai baht</option>
 						<option value="ZAR">🇿🇦 South African rand</option>
+						<option value="SEK">🇸🇪 Swedish krona</option>
+						<option value="CHF">🇨🇭 Swiss franc</option>
+						<option value="TRY">🇹🇷 Turkish lira</option>
 					</Select>
 				</label>
 				<br/>
@@ -109,31 +109,28 @@ const Converter = () => {
 					<br/>
 					<Select required {...select('to')}>
 						<option value="">Select</option>
-						<option value="EUR">🇪🇺 Euro</option>
-						<option value="USD">🇺🇸 US dollar</option>
-						<option value="JPY">🇯🇵 Japanese yen</option>
-						<option value="BGN">🇧🇬 Bulgarian lev</option>
-						<option value="CZK">🇨🇿 Czech koruna</option>
-						<option value="DKK">🇩🇰 Danish krone</option>
-						<option value="GBP">🇬🇧 Pound sterling</option>
-						<option value="HUF">🇭🇺 Hungarian forint</option>
-						<option value="PLN">🇵🇱 Polish zloty</option>
-						<option value="RON">🇷🇴 Romanian leu</option>
-						<option value="SEK">🇸🇪 Swedish krona</option>
-						<option value="CHF">🇨🇭 Swiss franc</option>
-						<option value="ISK">🇮🇸 Icelandic krona</option>
-						<option value="NOK">🇳🇴 Norwegian krone</option>
-						<option value="HRK">🇭🇷 Croatian kuna</option>
-						<option value="RUB">🇷🇺 Russian rouble</option>
-						<option value="TRY">🇹🇷 Turkish lira</option>
 						<option value="AUD">🇦🇺 Australian dollar</option>
 						<option value="BRL">🇧🇷 Brazilian real</option>
+						<option value="BGN">🇧🇬 Bulgarian lev</option>
 						<option value="CAD">🇨🇦 Canadian dollar</option>
 						<option value="CNY">🇨🇳 Chinese yuan</option>
+						<option value="HRK">🇭🇷 Croatian kuna</option>
+						<option value="CZK">🇨🇿 Czech koruna</option>
+						<option value="DKK">🇩🇰 Danish krone</option>
+						<option value="EUR">🇪🇺 Euro</option>
+						<option value="USD">🇺🇸 US dollar</option>
 						<option value="HKD">🇭🇰 Hong Kong dollar</option>
+						<option value="HUF">🇭🇺 Hungarian forint</option>
+						<option value="ISK">🇮🇸 Icelandic krona</option>
+						<option value="INR">🇮🇳 Indian rupee</option>
 						<option value="IDR">🇮🇩 Indonesian rupiah</option>
 						<option value="ILS">🇮🇱 Israeli shekel</option>
-						<option value="INR">🇮🇳 Indian rupee</option>
+						<option value="JPY">🇯🇵 Japanese yen</option>
+						<option value="NOK">🇳🇴 Norwegian krone</option>
+						<option value="PLN">🇵🇱 Polish zloty</option>
+						<option value="GBP">🇬🇧 Pound sterling</option>
+						<option value="RON">🇷🇴 Romanian leu</option>
+						<option value="RUB">🇷🇺 Russian rouble</option>
 						<option value="KRW">🇰🇷 South Korean won</option>
 						<option value="MXN">🇲🇽 Mexican peso</option>
 						<option value="MYR">🇲🇾 Malaysian ringgit</option>
@@ -142,6 +139,9 @@ const Converter = () => {
 						<option value="SGD">🇸🇬 Singapore dollar</option>
 						<option value="THB">🇹🇭 Thai baht</option>
 						<option value="ZAR">🇿🇦 South African rand</option>
+						<option value="SEK">🇸🇪 Swedish krona</option>
+						<option value="CHF">🇨🇭 Swiss franc</option>
+						<option value="TRY">🇹🇷 Turkish lira</option>
 					</Select>
 				</label>
 				<br/>
