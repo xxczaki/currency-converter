@@ -11,6 +11,7 @@ const Index = () => {
 	return (
 		<Container>
 			<Header>Currency Converter</Header>
+			<br/>
 			<Navigation/>
 			<br/>
 			<br/>

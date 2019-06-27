@@ -11,6 +11,7 @@ const Index = () => {
 	return (
 		<Container>
 			<Header>About</Header>
+			<br/>
 			<Navigation/>
 			<br/>
 			<Information/>

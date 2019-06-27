@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
         padding-top: 50px;
         padding-bottom: 100px;
         color: #fff;
-        line-height: 15pt;
         -webkit-font-smoothing: antialiased;
         -webkit-touch-callout: none;
         text-rendering: optimizeSpeed;
