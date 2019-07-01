@@ -5,13 +5,17 @@ import Container from '../components/container';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
 
-const Information = dynamic(() => import('../components/information'));
+const Information = dynamic(
+	() => import('../components/information'),
+	{
+		loading: () => <p>Loading...</p>
+	}
+);
 
 const Index = () => {
 	return (
 		<Container>
 			<Header>About</Header>
-			<br/>
 			<Navigation/>
 			<br/>
 			<Information/>

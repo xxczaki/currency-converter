@@ -5,13 +5,17 @@ import Container from '../components/container';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
 
-const Converter = dynamic(() => import('../components/converter'));
+const Converter = dynamic(
+	() => import('../components/converter'),
+	{
+		loading: () => <p>Loading...</p>
+	}
+);
 
 const Index = () => {
 	return (
 		<Container>
 			<Header>Currency Converter</Header>
-			<br/>
 			<Navigation/>
 			<br/>
 			<br/>
