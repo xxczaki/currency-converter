@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const Convert = styled.button`
     border: none;
     border-radius: 3px;
     width: 150px;
@@ -25,4 +25,4 @@ const Button = styled.button`
     }
 `;
 
-export default Button;
+export default Convert;
