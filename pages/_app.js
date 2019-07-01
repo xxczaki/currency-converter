@@ -6,19 +6,19 @@ import {createGlobalStyle} from 'styled-components';
 import '../node_modules/modern-normalize/modern-normalize.css';
 
 const GlobalStyle = createGlobalStyle`
-    body {
-        background-color: #212121;
-        font-family: monospace;
-        margin: auto;
-        width: 80%;
-        font-size: 16px;
-        padding-top: 50px;
-        padding-bottom: 100px;
-        color: #fff;
-        -webkit-font-smoothing: antialiased;
-        -webkit-touch-callout: none;
-        text-rendering: optimizeSpeed;
-    }
+	body {
+		background-color: #212121;
+		font-family: monospace;
+		margin: auto;
+		width: 80%;
+		font-size: 16px;
+		padding-top: 50px;
+		padding-bottom: 100px;
+		color: #fff;
+		-webkit-font-smoothing: antialiased;
+		-webkit-touch-callout: none;
+		text-rendering: optimizeSpeed;
+	}
 `;
 
 class MyApp extends App {
