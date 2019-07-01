@@ -5,7 +5,8 @@ import money from 'money';
 
 import Input from './input';
 import Select from './select';
-import Button from './convert-button';
+import Swap from './swap-button';
+import Convert from './convert-button';
 import Reset from './reset-button';
 
 const Converter = () => {
@@ -31,6 +32,17 @@ const Converter = () => {
 			}
 		});
 	}, []);
+
+	const swap = () => {
+		const {values} = formState;
+
+		if (values.to === undefined || values.from === undefined) {
+			return;
+		}
+
+		formState.setField('from', values.to);
+		formState.setField('to', values.from);
+	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -103,6 +115,7 @@ const Converter = () => {
 						<option value="TRY">🇹🇷 Turkish lira</option>
 					</Select>
 				</label>
+				<Swap type="button" onClick={() => swap()}>🔃</Swap>
 				<br/>
 				<label>
         To
@@ -145,9 +158,9 @@ const Converter = () => {
 					</Select>
 				</label>
 				<br/>
-				<Button type="submit">
+				<Convert type="submit">
 							Convert
-				</Button>
+				</Convert>
 				<Reset type="reset" onClick={() => {
 					resetState();
 				}}
