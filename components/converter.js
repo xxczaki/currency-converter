@@ -19,7 +19,7 @@ const Converter = () => {
 			const currentTimestamp = await Math.floor(Date.now() / 1000);
 
 			// Check whether cached data exists and if it does, whether it's older than one week
-			if (val === undefined || cacheTimestamp === undefined || (cacheTimestamp - currentTimestamp) < -604800) {
+			if (val === undefined || cacheTimestamp === undefined || (currentTimestamp - cacheTimestamp) < 604800) {
 				clear();
 
 				const request = await fetch('https://api.exchangeratesapi.io/latest');
