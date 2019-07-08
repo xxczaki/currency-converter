@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useFormState} from 'react-use-form-state';
 import {set, get, clear} from 'idb-keyval';
+// @ts-ignore
 import money from 'money';
 
 import Input from './input';
@@ -9,16 +10,17 @@ import Swap from './swap-button';
 import Convert from './convert-button';
 import Reset from './reset-button';
 
-const Converter = () => {
+const Converter = (): JSX.Element => {
 	const [formState, {number, select}] = useFormState();
-	const [result, setResult] = useState('');
+	const [result, setResult] = useState<string>('');
 
 	useEffect(() => {
 		get('exchangeRates').then(async val => {
 			const cacheTimestamp = await get('cc-timestamp');
-			const currentTimestamp = await Math.floor(Date.now() / 1000);
+			const currentTimestamp = Math.floor(Date.now() / 1000);
 
 			// Check whether cached data exists and if it does, whether it's older than one week
+			// @ts-ignore
 			if (val === undefined || cacheTimestamp === undefined || (currentTimestamp - cacheTimestamp) < 604800) {
 				clear();
 
@@ -33,7 +35,7 @@ const Converter = () => {
 		});
 	}, []);
 
-	const swap = () => {
+	const swap = (): void => {
 		const {values} = formState;
 
 		if (values.to === undefined || values.from === undefined) {
@@ -44,12 +46,12 @@ const Converter = () => {
 		formState.setField('to', values.from);
 	};
 
-	const handleSubmit = e => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
 		e.preventDefault();
 
 		const {values} = formState;
 
-		get('exchangeRates').then(async val => {
+		get('exchangeRates').then(async (val: any) => {
 			money.base = val.base;
 			money.rates = val.rates;
 
@@ -61,7 +63,7 @@ const Converter = () => {
 		});
 	};
 
-	const resetState = () => {
+	const resetState = (): void => {
 		formState.clear();
 		setResult('');
 	};

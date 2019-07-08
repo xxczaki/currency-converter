@@ -16,13 +16,12 @@ const GlobalStyle = createGlobalStyle`
 		padding-bottom: 100px;
 		color: #fff;
 		-webkit-font-smoothing: antialiased;
-		-webkit-touch-callout: none;
 		text-rendering: optimizeSpeed;
 	}
 `;
 
 class MyApp extends App {
-	static async getInitialProps({Component, ctx}) {
+	static async getInitialProps({Component, ctx}: any): Promise<any> {
 		let pageProps = {};
 
 		if (Component.getInitialProps) {
@@ -32,7 +31,7 @@ class MyApp extends App {
 		return {pageProps};
 	}
 
-	render() {
+	render(): JSX.Element {
 		const {Component, pageProps} = this.props;
 
 		return (

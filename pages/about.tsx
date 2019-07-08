@@ -5,21 +5,20 @@ import Container from '../components/container';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
 
-const Converter = dynamic(
-	() => import('../components/converter'),
+const Information = dynamic(
+	async () => import('../components/information'),
 	{
 		loading: () => <p>Loading...</p>
 	}
 );
 
-const Index = () => {
+const Index = (): JSX.Element => {
 	return (
 		<Container>
-			<Header>Currency Converter</Header>
+			<Header>About</Header>
 			<Navigation/>
 			<br/>
-			<br/>
-			<Converter/>
+			<Information/>
 		</Container>
 	);
 };

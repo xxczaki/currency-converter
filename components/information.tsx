@@ -2,7 +2,7 @@ import React from 'react';
 
 import ExternalLink from './link';
 
-const Information = () => (
+const Information = (): JSX.Element => (
 	<>
 		<p>This app uses the <ExternalLink href="https://exchangeratesapi.io/">Exchange Rates API</ExternalLink> for fast & reliable currency conversion.</p>
 		<p>It is built using the latest technologies, such as <ExternalLink href="https://reactjs.org/">React</ExternalLink> and <ExternalLink href="https://nextjs.org/">Next.js</ExternalLink>.</p>
