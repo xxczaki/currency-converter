@@ -7,7 +7,7 @@
   "dev": "next",
   "build": "next build",
   "start": "next start",
-  "test": "xo && stylelint 'pages/**/*.ts'"
+  "test": "xo && stylelint 'pages/**/*.tsx'"
  },
  "author": "Antoni Kepinski <a@kepinski.me> (https://kepinski.me)",
  "license": "MIT",
