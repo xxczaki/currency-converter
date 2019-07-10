@@ -23,13 +23,13 @@
   "styled-components": "^4.3.2"
  },
  "devDependencies": {
-  "@babel/core": "^7.5.0",
-  "@babel/preset-env": "^7.5.2",
+  "@babel/core": "^7.5.4",
+  "@babel/preset-env": "^7.5.4",
   "@babel/preset-typescript": "^7.3.3",
-  "@types/node": "^12.6.1",
+  "@types/node": "^12.6.2",
   "@types/react": "^16.8.23",
   "@types/react-dom": "^16.8.4",
-  "@types/styled-components": "^4.1.16",
+  "@types/styled-components": "^4.1.17",
   "@typescript-eslint/eslint-plugin": "^1.11.0",
   "@typescript-eslint/parser": "^1.11.0",
   "@zeit/next-css": "^1.0.1",
@@ -43,7 +43,7 @@
   "stylelint-config-styled-components": "^0.1.1",
   "stylelint-config-xo": "^0.15.0",
   "stylelint-processor-styled-components": "^1.8.0",
-  "typescript": "^3.5.2",
+  "typescript": "^3.5.3",
   "xo": "^0.24.0"
  },
  "xo": {
