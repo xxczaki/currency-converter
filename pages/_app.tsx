@@ -21,16 +21,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 class MyApp extends App {
-	static async getInitialProps({Component, ctx}: any): Promise<any> {
-		let pageProps = {};
-
-		if (Component.getInitialProps) {
-			pageProps = await Component.getInitialProps(ctx);
-		}
-
-		return {pageProps};
-	}
-
 	render(): JSX.Element {
 		const {Component, pageProps} = this.props;
 
