@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "alias": ["currency-converter.now.sh"],
     "routes": [
       {
         "src": "/", 
