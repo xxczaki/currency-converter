@@ -13,7 +13,7 @@ const Information = dynamic(
 	}
 );
 
-const Index = (): JSX.Element => {
+const About = (): JSX.Element => {
 	return (
 		<Container>
 			<Header>About</Header>
@@ -24,4 +24,4 @@ const Index = (): JSX.Element => {
 	);
 };
 
-export default Index;
+export default About;
