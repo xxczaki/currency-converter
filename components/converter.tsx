@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useFormState} from 'react-use-form-state';
 import {set, get, clear} from 'idb-keyval';
-// @ts-ignore
-import money from 'money';
+import Cashify from 'cashify';
 
 import Input from './input';
 import Select from './select';
@@ -52,10 +51,9 @@ const Converter = (): JSX.Element => {
 		const {values} = formState;
 
 		get('exchangeRates').then(async (val: any) => {
-			money.base = val.base;
-			money.rates = val.rates;
+			const cashify = new Cashify({base: val.base, rates: val.rates});
 
-			const result = money.convert(values.amount, {from: values.from, to: values.to}).toFixed(3);
+			const result = cashify.convert(values.amount, {from: values.from, to: values.to}).toFixed(3);
 
 			setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
 		}).catch(error => {
