@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useFormState} from 'react-use-form-state';
 import {set, get, clear} from 'idb-keyval';
-import Cashify from 'cashify';
+import {Cashify} from 'cashify';
 
 import Input from './input';
 import Select from './select';
