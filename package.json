@@ -12,7 +12,7 @@
  "author": "Antoni Kepinski <a@kepinski.me> (https://kepinski.me)",
  "license": "MIT",
  "dependencies": {
-  "cashify": "^1.1.0",
+  "cashify": "^1.1.2",
   "core-js": "^3.1.4",
   "idb-keyval": "^3.2.0",
   "modern-normalize": "^0.5.0",
@@ -33,7 +33,7 @@
   "@zeit/next-css": "^1.0.1",
   "babel-plugin-styled-components": "^1.10.6",
   "eslint-config-xo-react": "^0.20.0",
-  "eslint-config-xo-typescript": "^0.15.0",
+  "eslint-config-xo-typescript": "^0.16.0",
   "eslint-plugin-react": "^7.14.3",
   "eslint-plugin-react-hooks": "^1.6.1",
   "next-offline": "^4.0.3",
