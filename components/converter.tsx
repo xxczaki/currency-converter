@@ -53,7 +53,7 @@ const Converter = (): JSX.Element => {
 		get('exchangeRates').then(async (val: any) => {
 			const cashify = new Cashify({base: val.base, rates: val.rates});
 
-			const result = cashify.convert(values.amount, {from: values.from, to: values.to}).toFixed(3);
+			const result = await cashify.convert(Number(values.amount), {from: values.from, to: values.to}).toFixed(3);
 
 			setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
 		}).catch(error => {
