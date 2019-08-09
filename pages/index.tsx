@@ -4,10 +4,10 @@ import dynamic from 'next/dynamic';
 import Container from '../components/container';
 import Header from '../components/header';
 
-const Navigation = dynamic(async () => import('../components/navigation'));
+const Navigation = dynamic(() => import('../components/navigation'));
 
 const Converter = dynamic(
-	async () => import('../components/converter'),
+	() => import('../components/converter'),
 	{
 		loading: () => <p>Loading...</p>
 	}
