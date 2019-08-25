@@ -21,8 +21,7 @@ const nextConfig = {
 				}
 			}
 		]
-	},
-	target: 'serverless'
+	}
 };
 
 module.exports = withCSS(withOffline(nextConfig));
