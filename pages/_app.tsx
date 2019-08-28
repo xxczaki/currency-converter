@@ -1,4 +1,4 @@
-import App, {Container} from 'next/app';
+import App from 'next/app';
 import Head from 'next/head';
 import React from 'react';
 import {createGlobalStyle} from 'styled-components';
@@ -25,13 +25,13 @@ class MyApp extends App {
 		const {Component, pageProps} = this.props;
 
 		return (
-			<Container>
+			<>
 				<GlobalStyle/>
 				<Head>
 					<title>Currency Converter</title>
 				</Head>
 				<Component {...pageProps}/>
-			</Container>
+			</>
 		);
 	}
 }
