@@ -1,17 +1,9 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 
 import Container from '../components/container';
 import Header from '../components/header';
-
-const Navigation = dynamic(() => import('../components/navigation'));
-
-const Information = dynamic(
-	() => import('../components/information'),
-	{
-		loading: () => <p>Loading...</p>
-	}
-);
+import Navigation from '../components/navigation';
+import Information from '../components/information';
 
 const About = (): JSX.Element => {
 	return (
