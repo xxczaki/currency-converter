@@ -21,6 +21,10 @@ const nextConfig = {
 				}
 			}
 		]
+	},
+	experimental: {
+		modern: true,
+		granularChunks: true
 	}
 };
 
