@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useFormState} from 'react-use-form-state';
 import {set, get, clear} from 'idb-keyval';
-import {Cashify} from 'cashify';
 
 import Input from './input';
 import Select from './select';
@@ -51,11 +50,12 @@ const Converter = (): JSX.Element => {
 		const {values} = formState;
 
 		get('exchangeRates').then(async (val: any) => {
-			const cashify = new Cashify({base: val.base, rates: val.rates});
+			await import('cashify').then(async module => {
+				const cashify = new module.Cashify({base: val.base, rates: val.rates});
+				const result = await cashify.convert(Number(values.amount), {from: values.from, to: values.to}).toFixed(3);
 
-			const result = await cashify.convert(Number(values.amount), {from: values.from, to: values.to}).toFixed(3);
-
-			setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
+				setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
+			});
 		}).catch(error => {
 			setResult(`Something went wrong: ${error}`);
 		});
