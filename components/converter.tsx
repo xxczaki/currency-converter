@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useFormState} from 'react-use-form-state';
-import {set, get, clear} from 'idb-keyval';
+import useSWR from 'swr';
+
+import {fetcher} from '../utils/fetcher';
 
 import Input from './input';
 import Select from './select';
@@ -11,27 +13,7 @@ import Reset from './reset-button';
 const Converter = (): JSX.Element => {
 	const [formState, {number, select}] = useFormState();
 	const [result, setResult] = useState<string>('');
-
-	useEffect(() => {
-		get('exchangeRates').then(async val => {
-			const cacheTimestamp = await get('cc-timestamp');
-			const currentTimestamp = Math.floor(Date.now() / 1000);
-
-			// Check whether cached data exists and if it does, whether it's older than one week
-			// @ts-ignore
-			if (val === undefined || cacheTimestamp === undefined || (currentTimestamp - cacheTimestamp) < 604800) {
-				clear();
-
-				const request = await fetch('https://api.exchangeratesapi.io/latest');
-				const response = await request.json();
-
-				set('exchangeRates', response);
-				set('cc-timestamp', currentTimestamp);
-			} else {
-				console.log('Using cached data');
-			}
-		});
-	}, []);
+	const {data, error} = useSWR('main', fetcher);
 
 	const swap = (): void => {
 		const {values} = formState;
@@ -44,21 +26,20 @@ const Converter = (): JSX.Element => {
 		formState.setField('to', values.from);
 	};
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
 		e.preventDefault();
 
 		const {values} = formState;
 
-		get('exchangeRates').then(async (val: any) => {
-			await import('cashify').then(async module => {
-				const cashify = new module.Cashify({base: val.base, rates: val.rates});
-				const result = await cashify.convert(Number(values.amount), {from: values.from, to: values.to}).toFixed(3);
+		const {Cashify} = await import('cashify');
+		const cashify = new Cashify({base: data.base, rates: data.rates});
+		const result = cashify.convert(Number(values.amount), {from: values.from, to: values.to}).toFixed(3);
 
-				setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
-			});
-		}).catch(error => {
+		setResult(`${values.amount} ${values.from} => ${result} ${values.to}`);
+
+		if (error) {
 			setResult(`Something went wrong: ${error}`);
-		});
+		}
 	};
 
 	const resetState = (): void => {

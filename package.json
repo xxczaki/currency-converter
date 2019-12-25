@@ -1,78 +1,88 @@
 {
- "name": "currency-converter",
- "version": "1.0.0",
- "description": "Simple currency converter build with React & Next.js",
- "main": "index.js",
- "scripts": {
-  "dev": "next",
-  "build": "next build",
-  "start": "next start",
-  "test": "xo && stylelint 'pages/**/*.tsx'"
- },
- "author": "Antoni Kepinski <a@kepinski.me> (https://kepinski.me)",
- "license": "MIT",
- "dependencies": {
-  "cashify": "^2.0.2",
-  "core-js": "^3.4.1",
-  "idb-keyval": "^3.2.0",
-  "modern-normalize": "^0.5.0",
-  "next": "^9.1.3",
-  "react": "^16.11.0",
-  "react-dom": "^16.11.0",
-  "react-use-form-state": "^0.12.0",
-  "styled-components": "^5.0.0-rc.2"
- },
- "devDependencies": {
-  "@babel/core": "^7.7.2",
-  "@types/node": "^12.12.7",
-  "@types/react": "^16.9.11",
-  "@types/react-dom": "^16.9.4",
-  "@types/styled-components": "^4.4.0",
-  "@typescript-eslint/eslint-plugin": "^2.7.0",
-  "@typescript-eslint/parser": "^2.7.0",
-  "@zeit/next-css": "^1.0.1",
-  "babel-plugin-styled-components": "^1.10.6",
-  "eslint-config-xo-react": "^0.20.0",
-  "eslint-config-xo-typescript": "^0.21.0",
-  "eslint-plugin-react": "^7.16.0",
-  "eslint-plugin-react-hooks": "^2.2.0",
-  "next-offline": "^4.0.6",
-  "stylelint": "^11.1.1",
-  "stylelint-config-styled-components": "^0.1.1",
-  "stylelint-config-xo": "^0.15.0",
-  "stylelint-processor-styled-components": "^1.8.0",
-  "typescript": "^3.7.2",
-  "xo": "^0.25.3"
- },
- "xo": {
-  "nodeVersion": ">=10",
-  "envs": [
-   "node",
-   "browser"
-  ],
-  "extends": [
-   "xo-react",
-   "xo-typescript"
-  ],
-  "extensions": [
-   "ts",
-   "tsx"
-  ],
-  "settings": {
-   "react": {
-    "version": "16.11"
-   }
-  },
-  "rules": {
-   "import/no-unassigned-import": "off",
-   "react/jsx-child-element-spacing": "off",
-   "@typescript-eslint/no-explicit-any": "off",
-   "@typescript-eslint/promise-function-async": "off",
-   "@typescript-eslint/await-thenable": "off"
-  },
-  "ignores": [
-   "next.config.js",
-   "babel.config.js"
-  ]
- }
+    "name": "currency-converter",
+    "version": "1.0.0",
+    "description": "Simple currency converter build with React & Next.js",
+    "main": "index.js",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start",
+        "test": "xo && stylelint 'pages/**/*.tsx'"
+    },
+    "author": {
+        "name": "Antoni Kepinski",
+        "email": "a@kepinski.me",
+        "url": "https://kepinski.me"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@chakra-ui/core": "^0.5.2",
+        "@emotion/core": "^10.0.27",
+        "@emotion/styled": "^10.0.27",
+        "cashify": "^2.1.1",
+        "core-js": "^3.6.1",
+        "emotion-theming": "^10.0.27",
+        "modern-normalize": "^0.6.0",
+        "next": "^9.1.6",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0",
+        "react-use-form-state": "^0.12.0",
+        "styled-components": "^4.4.1",
+        "swr": "^0.1.15"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.7",
+        "@types/node": "^13.1.0",
+        "@types/react": "^16.9.17",
+        "@types/react-dom": "^16.9.4",
+        "@types/styled-components": "^4.4.1",
+        "@typescript-eslint/eslint-plugin": "^2.13.0",
+        "@typescript-eslint/parser": "^2.13.0",
+        "@zeit/next-css": "^1.0.1",
+        "babel-plugin-styled-components": "^1.10.6",
+        "eslint-config-xo-react": "^0.20.0",
+        "eslint-config-xo-typescript": "^0.24.1",
+        "eslint-plugin-react": "^7.17.0",
+        "eslint-plugin-react-hooks": "^2.3.0",
+        "next-offline": "^4.0.6",
+        "stylelint": "^12.0.1",
+        "stylelint-config-styled-components": "^0.1.1",
+        "stylelint-config-xo": "^0.16.0",
+        "stylelint-processor-styled-components": "^1.9.0",
+        "typescript": "^3.7.4",
+        "xo": "^0.25.3"
+    },
+    "xo": {
+        "nodeVersion": ">=10",
+        "envs": [
+            "node",
+            "browser"
+        ],
+        "extends": [
+            "xo-react",
+            "xo-typescript"
+        ],
+        "extensions": [
+            "ts",
+            "tsx"
+        ],
+        "settings": {
+            "react": {
+                "version": "16.11"
+            }
+        },
+        "rules": {
+            "import/no-unassigned-import": "off",
+            "react/jsx-child-element-spacing": "off",
+            "@typescript-eslint/no-explicit-any": "off",
+            "@typescript-eslint/promise-function-async": "off",
+            "@typescript-eslint/await-thenable": "off",
+            "@typescript-eslint/no-untyped-public-signature": "off",
+            "@typescript-eslint/restrict-template-expressions": "off"
+        },
+        "ignores": [
+            "next.config.js",
+            "babel.config.js"
+        ]
+    }
 }
