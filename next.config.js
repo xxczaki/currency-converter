@@ -1,5 +1,5 @@
+const withFonts = require('next-fonts');
 const withOffline = require('next-offline');
-const withCSS = require('@zeit/next-css');
 
 const nextConfig = {
 	workboxOpts: {
@@ -7,7 +7,7 @@ const nextConfig = {
 		runtimeCaching: [
 			{
 				urlPattern: /^https?.*/,
-				handler: 'networkFirst',
+				handler: 'NetworkFirst',
 				options: {
 					cacheName: 'https-calls',
 					networkTimeoutSeconds: 15,
@@ -29,4 +29,4 @@ const nextConfig = {
 	}
 };
 
-module.exports = withCSS(withOffline(nextConfig));
+module.exports = withFonts(withOffline(nextConfig));

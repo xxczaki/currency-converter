@@ -13,10 +13,8 @@
 
 - Built with modern technologies
 - Does not require any API keys
-- Uses plain `fetch` to fetch data
 - Uses the open-source [Exchange Rates API](http://exchangeratesapi.io)
-- Caches API results
-- Works offline
+- Works offline (PWA)
 - Written in TypeScript
 
 ## Development

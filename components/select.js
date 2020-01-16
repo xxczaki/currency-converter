@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-const Input = styled.input`
+const Select = styled.select`
     cursor: pointer;
     color: #fff;
-    background-color: #474747;
+    background-color: #424242;
     margin-top: 10px;
     margin-bottom: 20px;
-    width: 235px;
+    width: 18em;
     padding: 10px;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     outline: none;
     appearance: none;
-    box-shadow: none;
+    user-select: none;
     transition: background 0.8s;
 
     &:hover {
@@ -25,4 +25,4 @@ const Input = styled.input`
     }
 `;
 
-export default Input;
+export default Select;
