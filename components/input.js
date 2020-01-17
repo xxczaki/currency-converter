@@ -6,7 +6,7 @@ const Input = styled.input`
     background-color: #424242;
     margin-top: 10px;
     margin-bottom: 20px;
-    width: 16.5em;
+    width: 18.5em;
 	height: 1.5em;
 	font-family: 'Space Mono', monospace;
     padding: 10px;

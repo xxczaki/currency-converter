@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Button = styled.button`
     border: none;
     border-radius: 4px;
-    width: ${props => props.primary || props.reset ? '15em' : '2.5em'};
+    width: ${props => props.primary || props.reset ? '16.5em' : '2.5em'};
 	height: ${props => props.primary || props.reset ? 'auto' : '2.5em'};
 	padding: ${props => props.primary || props.reset ? '12px 18px' : '5px'};
 	margin-top: ${props => props.primary || props.reset ? 'auto' : '0.6em'};

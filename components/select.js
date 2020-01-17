@@ -6,14 +6,15 @@ const Select = styled.select`
     background-color: #424242;
     margin-top: 10px;
     margin-bottom: 20px;
-    width: 18em;
+    width: 20em;
 	height: 3em;
 	font-family: 'Space Mono', monospace;
     padding: 10px;
     border: none;
     border-radius: 4px;
     outline: none;
-    user-select: none;
+	appearance: none;
+	user-select: none;
     transition: background 0.8s;
 
     &:hover {
