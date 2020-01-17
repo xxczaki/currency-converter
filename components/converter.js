@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useFormState} from 'react-use-form-state';
+import {useForm} from 'react-hook-form';
 import useSWR from 'swr';
 
 import {fetcher} from '../utils/fetcher';
@@ -12,26 +12,60 @@ import Select from './select';
 import ButtonGroup from './button-group';
 import Button from './button';
 
+const options = [
+	{value: 'AUD', label: '🇦🇺 Australian dollar'},
+	{value: 'BRL', label: '🇧🇷 Brazilian real'},
+	{value: 'BGN', label: '🇧🇬 Bulgarian lev'},
+	{value: 'CAD', label: '🇨🇦 Canadian dollar'},
+	{value: 'CNY', label: '🇨🇳 Chinese yuan'},
+	{value: 'HRK', label: '🇭🇷 Croatian kuna'},
+	{value: 'CZK', label: '🇨🇿 Czech koruna'},
+	{value: 'DKK', label: '🇩🇰 Danish krone'},
+	{value: 'EUR', label: '🇪🇺 Euro'},
+	{value: 'USD', label: '🇺🇸 US dollar'},
+	{value: 'HKD', label: '🇭🇰 Hong Kong dollar'},
+	{value: 'HUF', label: '🇭🇺 Hungarian forint'},
+	{value: 'ISK', label: '🇮🇸 Icelandic krona'},
+	{value: 'INR', label: '🇮🇳 Indian rupee'},
+	{value: 'IDR', label: '🇮🇩 Indonesian rupiah'},
+	{value: 'ILS', label: '🇮🇱 Israeli shekel'},
+	{value: 'JPY', label: '🇯🇵 Japanese yen'},
+	{value: 'NOK', label: '🇳🇴 Norwegian krone'},
+	{value: 'PLN', label: '🇵🇱 Polish zloty'},
+	{value: 'GBP', label: '🇬🇧 Pound sterling'},
+	{value: 'RON', label: '🇷🇴 Romanian leu'},
+	{value: 'RUB', label: '🇷🇺 Russian rouble'},
+	{value: 'KRW', label: '🇰🇷 South Korean won'},
+	{value: 'MXN', label: '🇲🇽 Mexican peso'},
+	{value: 'MYR', label: '🇲🇾 Malaysian ringgit'},
+	{value: 'NZD', label: '🇳🇿 New Zealand dollar'},
+	{value: 'PHP', label: '🇵🇭 Philippine peso'},
+	{value: 'SGD', label: '🇸🇬 Singapore dollar'},
+	{value: 'THB', label: '🇹🇭 Thai baht'},
+	{value: 'ZAR', label: '🇿🇦 South African rand'},
+	{value: 'SEK', label: '🇸🇪 Swedish krona'},
+	{value: 'CHF', label: '🇨🇭 Swiss franc'},
+	{value: 'TRY', label: '🇹🇷 Turkish lira'}
+];
+
 const Converter = () => {
-	const [formState, {number, select}] = useFormState();
+	const {register, handleSubmit, reset, getValues, setValue} = useForm();
 	const [result, setResult] = useState('');
 	const {data, error} = useSWR('main', fetcher);
 
 	const swap = () => {
-		const {values} = formState;
+		const values = getValues();
 
 		if (values.to === undefined || values.from === undefined) {
 			return;
 		}
 
-		formState.setField('from', values.to);
-		formState.setField('to', values.from);
+		setValue('from', values.to);
+		setValue('to', values.from);
 	};
 
-	const handleSubmit = async e => {
-		e.preventDefault();
-
-		const {values} = formState;
+	const onSubmit = async values => {
+		// E.preventDefault();
 
 		const {Cashify} = await import('cashify');
 		const cashify = new Cashify({base: data.base, rates: data.rates});
@@ -45,96 +79,36 @@ const Converter = () => {
 	};
 
 	const resetState = () => {
-		formState.clear();
+		reset();
 		setResult('');
 	};
 
 	return (
 		<Wrapper>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit(onSubmit)}>
 				<Label>
         Amount
-					<Input required {...number('amount')} type="number" min="1" step="any" pattern="[0-9]*" name="amount" placeholder="Amount"/>
+					<Input ref={register({required: true})} type="number" min="1" step="any" pattern="[0-9]*" name="amount" placeholder="Amount"/>
 				</Label>
 				<Label>
         From
 					<SelectAddon>
-						<Select required {...select('from')}>
+						<Select ref={register({required: true})} name="from">
 							<option value="">Select</option>
-							<option value="AUD">🇦🇺 Australian dollar</option>
-							<option value="BRL">🇧🇷 Brazilian real</option>
-							<option value="BGN">🇧🇬 Bulgarian lev</option>
-							<option value="CAD">🇨🇦 Canadian dollar</option>
-							<option value="CNY">🇨🇳 Chinese yuan</option>
-							<option value="HRK">🇭🇷 Croatian kuna</option>
-							<option value="CZK">🇨🇿 Czech koruna</option>
-							<option value="DKK">🇩🇰 Danish krone</option>
-							<option value="EUR">🇪🇺 Euro</option>
-							<option value="USD">🇺🇸 US dollar</option>
-							<option value="HKD">🇭🇰 Hong Kong dollar</option>
-							<option value="HUF">🇭🇺 Hungarian forint</option>
-							<option value="ISK">🇮🇸 Icelandic krona</option>
-							<option value="INR">🇮🇳 Indian rupee</option>
-							<option value="IDR">🇮🇩 Indonesian rupiah</option>
-							<option value="ILS">🇮🇱 Israeli shekel</option>
-							<option value="JPY">🇯🇵 Japanese yen</option>
-							<option value="NOK">🇳🇴 Norwegian krone</option>
-							<option value="PLN">🇵🇱 Polish zloty</option>
-							<option value="GBP">🇬🇧 Pound sterling</option>
-							<option value="RON">🇷🇴 Romanian leu</option>
-							<option value="RUB">🇷🇺 Russian rouble</option>
-							<option value="KRW">🇰🇷 South Korean won</option>
-							<option value="MXN">🇲🇽 Mexican peso</option>
-							<option value="MYR">🇲🇾 Malaysian ringgit</option>
-							<option value="NZD">🇳🇿 New Zealand dollar</option>
-							<option value="PHP">🇵🇭 Philippine peso</option>
-							<option value="SGD">🇸🇬 Singapore dollar</option>
-							<option value="THB">🇹🇭 Thai baht</option>
-							<option value="ZAR">🇿🇦 South African rand</option>
-							<option value="SEK">🇸🇪 Swedish krona</option>
-							<option value="CHF">🇨🇭 Swiss franc</option>
-							<option value="TRY">🇹🇷 Turkish lira</option>
+							{options.map(el => (
+								<option key={el.value} value={el.value}>{el.label}</option>
+							))}
 						</Select>
 						<Button type="button" onClick={() => swap()}>🔃</Button>
 					</SelectAddon>
 				</Label>
 				<Label>
         To
-					<Select required {...select('to')}>
+					<Select ref={register({required: true})} name="to">
 						<option value="">Select</option>
-						<option value="AUD">🇦🇺 Australian dollar</option>
-						<option value="BRL">🇧🇷 Brazilian real</option>
-						<option value="BGN">🇧🇬 Bulgarian lev</option>
-						<option value="CAD">🇨🇦 Canadian dollar</option>
-						<option value="CNY">🇨🇳 Chinese yuan</option>
-						<option value="HRK">🇭🇷 Croatian kuna</option>
-						<option value="CZK">🇨🇿 Czech koruna</option>
-						<option value="DKK">🇩🇰 Danish krone</option>
-						<option value="EUR">🇪🇺 Euro</option>
-						<option value="USD">🇺🇸 US dollar</option>
-						<option value="HKD">🇭🇰 Hong Kong dollar</option>
-						<option value="HUF">🇭🇺 Hungarian forint</option>
-						<option value="ISK">🇮🇸 Icelandic krona</option>
-						<option value="INR">🇮🇳 Indian rupee</option>
-						<option value="IDR">🇮🇩 Indonesian rupiah</option>
-						<option value="ILS">🇮🇱 Israeli shekel</option>
-						<option value="JPY">🇯🇵 Japanese yen</option>
-						<option value="NOK">🇳🇴 Norwegian krone</option>
-						<option value="PLN">🇵🇱 Polish zloty</option>
-						<option value="GBP">🇬🇧 Pound sterling</option>
-						<option value="RON">🇷🇴 Romanian leu</option>
-						<option value="RUB">🇷🇺 Russian rouble</option>
-						<option value="KRW">🇰🇷 South Korean won</option>
-						<option value="MXN">🇲🇽 Mexican peso</option>
-						<option value="MYR">🇲🇾 Malaysian ringgit</option>
-						<option value="NZD">🇳🇿 New Zealand dollar</option>
-						<option value="PHP">🇵🇭 Philippine peso</option>
-						<option value="SGD">🇸🇬 Singapore dollar</option>
-						<option value="THB">🇹🇭 Thai baht</option>
-						<option value="ZAR">🇿🇦 South African rand</option>
-						<option value="SEK">🇸🇪 Swedish krona</option>
-						<option value="CHF">🇨🇭 Swiss franc</option>
-						<option value="TRY">🇹🇷 Turkish lira</option>
+						{options.map(el => (
+							<option key={el.value} value={el.value}>{el.label}</option>
+						))}
 					</Select>
 				</Label>
 				<ButtonGroup>

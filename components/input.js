@@ -7,6 +7,8 @@ const Input = styled.input`
     margin-top: 10px;
     margin-bottom: 20px;
     width: 16.5em;
+	height: 1.5em;
+	font-family: 'Space Mono', monospace;
     padding: 10px;
     border: none;
     border-radius: 4px;

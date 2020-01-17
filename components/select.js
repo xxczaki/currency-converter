@@ -7,11 +7,12 @@ const Select = styled.select`
     margin-top: 10px;
     margin-bottom: 20px;
     width: 18em;
+	height: 3em;
+	font-family: 'Space Mono', monospace;
     padding: 10px;
     border: none;
     border-radius: 4px;
     outline: none;
-    appearance: none;
     user-select: none;
     transition: background 0.8s;
 
