@@ -9,6 +9,7 @@ const Input = styled.input`
     width: 250px;
 	height: 25px;
 	font-family: 'Space Mono', monospace;
+	font-size: 16px;
     padding: 10px;
     border: none;
     border-radius: 4px;

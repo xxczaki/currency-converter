@@ -9,6 +9,7 @@ const Select = styled.select`
     width: 270px;
 	height: 45px;
 	font-family: 'Space Mono', monospace;
+	font-size: 16px;
     padding: 10px;
     border: none;
     border-radius: 4px;
