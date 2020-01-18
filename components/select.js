@@ -7,7 +7,7 @@ const Select = styled.select`
     margin-top: 10px;
     margin-bottom: 20px;
     width: 270px;
-	height: 3em;
+	height: 45px;
 	font-family: 'Space Mono', monospace;
     padding: 10px;
     border: none;
