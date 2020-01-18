@@ -6,7 +6,7 @@ const Header = styled.header`
 	letter-spacing: 1.2px;
 
 	@media (min-width: 320px) and (max-width: 480px) {
-		font-size: 1em;
+		font-size: 0.9em;
 	}
 `;
 
