@@ -4,7 +4,7 @@ const Button = styled.button`
     border: none;
     border-radius: 4px;
     width: ${props => props.primary || props.reset ? '270px' : '2.5em'};
-	height: ${props => props.primary || props.reset ? 'auto' : '2.5em'};
+	height: ${props => props.primary || props.reset ? 'auto' : '2.8em'};
 	padding: ${props => props.primary || props.reset ? '12px 18px' : '5px'};
 	margin-top: ${props => props.primary || props.reset ? 'auto' : '2.1em'};
 	margin-right: ${props => props.primary ? '10px' : 'auto'};
