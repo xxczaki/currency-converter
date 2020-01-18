@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import useSWR from 'swr';
+import {Cashify} from 'cashify';
 
 import {fetcher} from '../utils/fetcher';
 
 import Wrapper from './wrapper';
+import Checkbox from './checkbox';
 import Label from './label';
 import Input from './input';
 import SelectAddon from './select-addon';
@@ -72,7 +74,7 @@ const oceania = [
 ];
 
 const Converter = () => {
-	const {register, handleSubmit, reset, getValues, setValue} = useForm();
+	const {register, handleSubmit, reset, watch, getValues, setValue} = useForm();
 	const [result, setResult] = useState('');
 	const {data, error} = useSWR('main', fetcher);
 
@@ -88,7 +90,6 @@ const Converter = () => {
 	};
 
 	const onSubmit = async values => {
-		const {Cashify} = await import('cashify');
 		const cashify = new Cashify({base: data.base, rates: data.rates});
 		const result = cashify.convert(Number(values.amount), {from: values.from, to: values.to}).toFixed(3);
 
@@ -104,100 +105,128 @@ const Converter = () => {
 		setResult('');
 	};
 
+	if (watch('mode') === 'simple') {
+		const cashify = new Cashify({base: data.base, rates: data.rates});
+
+		const expression = watch('expression');
+
+		try {
+			const firstPart = expression.slice(0, expression.indexOf('to')).toUpperCase().trim();
+			const amount = parseFloat(expression.replace(/[^0-9-.]/g, ''));
+			const from = firstPart.replace(/(?<currency_code>[^A-Za-z])/g, '');
+			const to = expression.split('to').pop().toUpperCase().trim();
+
+			const result = cashify.convert(amount, {from, to}).toFixed(3);
+
+			setResult(`${amount} ${from} => ${result} ${to}`);
+			// eslint-disable-next-line no-unused-vars
+		} catch (error_) {
+			// eslint-disable-next-line no-unused-expressions
+			null;
+		}
+	}
+
 	return (
 		<Wrapper>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<Label>
+				<Checkbox ref={register} type="checkbox" name="mode" value="simple"/> Simple mode (beta)
+				{watch('mode') === 'simple' ?
+					<div>
+						<Input ref={register} type="text" name="expression" placeholder="ex. 10 usd to pln"/>
+					</div>			:
+					<>
+						<Label>
         Amount
-					<Input ref={register({required: true})} type="number" min="1" step="any" pattern="[0-9]*" name="amount" placeholder="Amount"/>
-				</Label>
-				<SelectAddon>
-					<Label>
+							<Input ref={register({required: true})} type="number" min="1" step="any" pattern="[0-9]*" name="amount" placeholder="Amount"/>
+						</Label>
+						<SelectAddon>
+							<Label>
         From
-						<Select ref={register({required: true})} name="from">
-							<option value="">Select</option>
-							<optgroup label="Majors">
-								{majors.map(el => (
-									<option key={el.value} value={el.value}>{el.label}</option>
-								))}
-							</optgroup>
-							<optgroup label="Europe">
-								{europe.map(el => (
-									<option key={el.value} value={el.value}>{el.label}</option>
-								))}
-							</optgroup>
-							<optgroup label="Americas">
-								{americas.map(el => (
-									<option key={el.value} value={el.value}>{el.label}</option>
-								))}
-							</optgroup>
-							<optgroup label="Africa">
-								{africa.map(el => (
-									<option key={el.value} value={el.value}>{el.label}</option>
-								))}
-							</optgroup>
-							<optgroup label="Asia">
-								{asia.map(el => (
-									<option key={el.value} value={el.value}>{el.label}</option>
-								))}
-							</optgroup>
-							<optgroup label="Oceania">
-								{oceania.map(el => (
-									<option key={el.value} value={el.value}>{el.label}</option>
-								))}
-							</optgroup>
-						</Select>
-					</Label>
-					<Button type="button" onClick={() => swap()}>🔃</Button>
-				</SelectAddon>
-				<Label>
+								<Select ref={register({required: true})} name="from">
+									<option value="">Select</option>
+									<optgroup label="Majors">
+										{majors.map(el => (
+											<option key={el.value} value={el.value}>{el.label}</option>
+										))}
+									</optgroup>
+									<optgroup label="Europe">
+										{europe.map(el => (
+											<option key={el.value} value={el.value}>{el.label}</option>
+										))}
+									</optgroup>
+									<optgroup label="Americas">
+										{americas.map(el => (
+											<option key={el.value} value={el.value}>{el.label}</option>
+										))}
+									</optgroup>
+									<optgroup label="Africa">
+										{africa.map(el => (
+											<option key={el.value} value={el.value}>{el.label}</option>
+										))}
+									</optgroup>
+									<optgroup label="Asia">
+										{asia.map(el => (
+											<option key={el.value} value={el.value}>{el.label}</option>
+										))}
+									</optgroup>
+									<optgroup label="Oceania">
+										{oceania.map(el => (
+											<option key={el.value} value={el.value}>{el.label}</option>
+										))}
+									</optgroup>
+								</Select>
+							</Label>
+							<Button type="button" onClick={() => swap()}>🔃</Button>
+						</SelectAddon>
+						<Label>
         To
-					<Select ref={register({required: true})} name="to">
-						<option value="">Select</option>
-						<optgroup label="Majors">
-							{majors.map(el => (
-								<option key={el.value} value={el.value}>{el.label}</option>
-							))}
-						</optgroup>
-						<optgroup label="Europe">
-							{europe.map(el => (
-								<option key={el.value} value={el.value}>{el.label}</option>
-							))}
-						</optgroup>
-						<optgroup label="Americas">
-							{americas.map(el => (
-								<option key={el.value} value={el.value}>{el.label}</option>
-							))}
-						</optgroup>
-						<optgroup label="Africa">
-							{africa.map(el => (
-								<option key={el.value} value={el.value}>{el.label}</option>
-							))}
-						</optgroup>
-						<optgroup label="Asia">
-							{asia.map(el => (
-								<option key={el.value} value={el.value}>{el.label}</option>
-							))}
-						</optgroup>
-						<optgroup label="Oceania">
-							{oceania.map(el => (
-								<option key={el.value} value={el.value}>{el.label}</option>
-							))}
-						</optgroup>
-					</Select>
-				</Label>
-				<ButtonGroup>
-					<Button primary type="submit">
+							<Select ref={register({required: true})} name="to">
+								<option value="">Select</option>
+								<optgroup label="Majors">
+									{majors.map(el => (
+										<option key={el.value} value={el.value}>{el.label}</option>
+									))}
+								</optgroup>
+								<optgroup label="Europe">
+									{europe.map(el => (
+										<option key={el.value} value={el.value}>{el.label}</option>
+									))}
+								</optgroup>
+								<optgroup label="Americas">
+									{americas.map(el => (
+										<option key={el.value} value={el.value}>{el.label}</option>
+									))}
+								</optgroup>
+								<optgroup label="Africa">
+									{africa.map(el => (
+										<option key={el.value} value={el.value}>{el.label}</option>
+									))}
+								</optgroup>
+								<optgroup label="Asia">
+									{asia.map(el => (
+										<option key={el.value} value={el.value}>{el.label}</option>
+									))}
+								</optgroup>
+								<optgroup label="Oceania">
+									{oceania.map(el => (
+										<option key={el.value} value={el.value}>{el.label}</option>
+									))}
+								</optgroup>
+							</Select>
+						</Label>
+						<ButtonGroup>
+							<Button primary type="submit">
 						Convert
-					</Button>
-					<Button
-						reset type="reset" onClick={() => {
-							resetState();
-						}}
-					>
+							</Button>
+							<Button
+								reset type="reset" onClick={() => {
+									resetState();
+								}}
+							>
 						Reset
-					</Button>
-				</ButtonGroup>
+							</Button>
+						</ButtonGroup>
+					</>}
 				{result}
 			</form>
 		</Wrapper>
