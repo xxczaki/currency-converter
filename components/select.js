@@ -6,7 +6,7 @@ const Select = styled.select`
     background-color: #424242;
     margin-top: 10px;
     margin-bottom: 20px;
-    width: 20em;
+    width: 270px;
 	height: 3em;
 	font-family: 'Space Mono', monospace;
     padding: 10px;
