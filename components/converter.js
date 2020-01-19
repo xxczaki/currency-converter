@@ -105,20 +105,16 @@ const Converter = () => {
 		setResult('');
 	};
 
-	if (watch('mode') === 'simple') {
+	const mode = watch('mode');
+	const expression = watch('expression');
+
+	if (mode === 'simple' && expression?.length >= 12) {
 		const cashify = new Cashify({base: data.base, rates: data.rates});
 
-		const expression = watch('expression');
-
 		try {
-			const firstPart = expression.slice(0, expression.indexOf('to')).toUpperCase().trim();
-			const amount = parseFloat(expression.replace(/[^0-9-.]/g, ''));
-			const from = firstPart.replace(/(?<currency_code>[^A-Za-z])/g, '');
-			const to = expression.split('to').pop().toUpperCase().trim();
+			const result = cashify.convert(expression).toFixed(3);
 
-			const result = cashify.convert(amount, {from, to}).toFixed(3);
-
-			setResult(`${amount} ${from} => ${result} ${to}`);
+			setResult(`Result: ${result}`);
 			// eslint-disable-next-line no-unused-vars
 		} catch (error_) {
 			// eslint-disable-next-line no-unused-expressions
@@ -133,6 +129,8 @@ const Converter = () => {
 				{watch('mode') === 'simple' ?
 					<div>
 						<Input ref={register} type="text" name="expression" placeholder="ex. 10 usd to pln"/>
+						{/* Prevent errors when clicking enter/return key */}
+						<button disabled type="submit" style={{display: 'none'}} aria-hidden="true"/>
 					</div>			:
 					<>
 						<Label>
