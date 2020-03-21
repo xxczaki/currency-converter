@@ -89,7 +89,7 @@ const Index: NextPage<Props> = (props: Props) => {
 	return (
 		<Container>
 			<Stack spacing={3}>
-				<Heading>Currency Converter</Heading>
+				<Heading textAlign="center">Currency Converter</Heading>
 				<FormControl>
 					<FormLabel htmlFor="amount">Amount</FormLabel>
 					<Input
