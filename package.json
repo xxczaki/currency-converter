@@ -24,6 +24,7 @@
         "@emotion/styled": "^10.0.27",
         "cashify": "^2.4.1",
         "core-js": "^3.6.4",
+        "emotion-theming": "^10.0.27",
         "isomorphic-unfetch": "^3.0.0",
         "next": "^9.3.1",
         "react": "^16.13.1",
