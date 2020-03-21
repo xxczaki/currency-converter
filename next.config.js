@@ -1,3 +1,4 @@
+
 const withFonts = require('next-fonts');
 const withOffline = require('next-offline');
 
@@ -24,8 +25,7 @@ const nextConfig = {
 	},
 	reactStrictMode: true,
 	experimental: {
-		modern: true,
-		granularChunks: true
+		modern: true
 	}
 };
 

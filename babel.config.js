@@ -4,17 +4,14 @@ const presets = [
 			targets: {
 				esmodules: true
 			},
-			corejs: 3,
+			corejs: '3.6',
 			useBuiltIns: 'usage'
 		}
 	}]
 ];
 
 const plugins = [
-	['babel-plugin-styled-components', {
-		ssr: true,
-		pure: true
-	}]
+	['emotion']
 ];
 
 module.exports = {presets, plugins};

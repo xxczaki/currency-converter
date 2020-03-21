@@ -1,59 +1,78 @@
 {
     "name": "currency-converter",
     "version": "1.0.0",
-    "description": "Simple currency converter build with React & Next.js",
-    "private": true,
+    "description": "Easily convert between 32 currencies",
+    "license": "MIT",
+    "author": {
+        "name": "Antoni Kepinski",
+        "email": "a@kepinski.me",
+        "url": "https://kepinski.me"
+    },
+    "main": "app/background.js",
     "scripts": {
         "build": "next build",
         "dev": "next dev",
         "start": "next start",
-        "test": "xo && stylelint './**/*.js'"
+        "test": "xo"
     },
     "engines": {
         "node": "12.x"
+    },
+    "dependencies": {
+        "@chakra-ui/core": "^0.6.1",
+        "@emotion/core": "^10.0.28",
+        "@emotion/styled": "^10.0.27",
+        "cashify": "^2.4.1",
+        "core-js": "^3.6.4",
+        "isomorphic-unfetch": "^3.0.0",
+        "next": "^9.3.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-hook-form": "^5.1.1",
+        "react-select": "^3.0.8",
+        "swr": "^0.1.18"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.9.0",
+        "@types/react": "^16.9.25",
+        "@typescript-eslint/eslint-plugin": "^2.24.0",
+        "@typescript-eslint/parser": "^2.24.0",
+        "babel-plugin-emotion": "^10.0.29",
+        "eslint-config-xo-react": "^0.23.0",
+        "eslint-config-xo-typescript": "^0.26.0",
+        "eslint-plugin-react": "^7.19.0",
+        "eslint-plugin-react-hooks": "^2.5.1",
+        "next-fonts": "^1.0.3",
+        "next-offline": "^5.0.0",
+        "typescript": "^3.8.3",
+        "xo": "^0.28.0"
     },
     "xo": {
         "envs": [
             "node",
             "browser"
         ],
-        "extends": "xo-react",
-        "nodeVersion": ">=10",
-        "parser": "babel-eslint",
+        "extends": [
+            "xo-typescript",
+            "xo-react"
+        ],
         "rules": {
-            "import/no-unassigned-import": "off"
+            "import/no-unassigned-import": "off",
+            "import/extensions": "off",
+            "unicorn/string-content": "off"
         },
         "settings": {
             "react": {
-                "version": "16.12"
+                "version": "16.13"
             }
-        }
-    },
-    "dependencies": {
-        "cashify": "^2.3.0",
-        "core-js": "^3.6.4",
-        "framer-motion": "^1.7.0",
-        "next": "^9.2.0",
-        "prop-types": "^15.7.2",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0",
-        "react-hook-form": "^4.5.6",
-        "styled-components": "^5.0.0",
-        "swr": "^0.1.16"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.8.3",
-        "babel-eslint": "^10.0.3",
-        "babel-plugin-styled-components": "^1.10.6",
-        "eslint-config-xo-react": "^0.22.0",
-        "eslint-plugin-react": "^7.18.0",
-        "eslint-plugin-react-hooks": "^2.3.0",
-        "next-fonts": "^0.19.0",
-        "next-offline": "^4.0.6",
-        "stylelint": "^13.0.0",
-        "stylelint-config-recommended": "^3.0.0",
-        "stylelint-config-styled-components": "^0.1.1",
-        "stylelint-processor-styled-components": "^1.9.0",
-        "xo": "^0.25.3"
+        },
+        "extensions": [
+            "tsx",
+            "ts"
+        ],
+        "ignores": [
+            "babel.config.js",
+            "next.config.js"
+        ]
     }
 }

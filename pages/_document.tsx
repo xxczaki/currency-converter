@@ -1,49 +1,23 @@
 import React from 'react';
 import Document, {Head, Main, NextScript} from 'next/document';
-import {ServerStyleSheet} from 'styled-components';
 
 export default class MyDocument extends Document {
-	static async getInitialProps(ctx) {
-		const sheet = new ServerStyleSheet();
-		const originalRenderPage = ctx.renderPage;
-
-		try {
-			ctx.renderPage = () =>
-				originalRenderPage({
-					enhanceApp: App => props => sheet.collectStyles(<App {...props}/>)
-				});
-
-			const initialProps = await Document.getInitialProps(ctx);
-			return {
-				...initialProps,
-				styles: (
-					<>
-						{initialProps.styles}
-						{sheet.getStyleElement()}
-					</>
-				)
-			};
-		} finally {
-			sheet.seal();
-		}
-	}
-
-	render() {
+	render(): JSX.Element {
 		return (
 			<html lang="pl">
 				<Head>
 					<meta charSet="utf-8"/>
 					<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-					<meta name="description" content="Simple currency converter, that works offline!"/>
+					<meta name="description" content="Easily convert between 32 currencies"/>
 					<meta name="theme-color" content="#121212"/>
 					<meta name="msapplication-TileColor" content="#121212"/>
 					<meta name="apple-mobile-web-app-capable" content="yes"/>
 					<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 					<meta name="twitter:card" content="summary"/>
 					<meta name="twitter:title" content="Currency Converter"/>
-					<meta name="twitter:description" content="Simple currency converter, that works offline!"/>
+					<meta name="twitter:description" content="Easily convert between 32 currencies"/>
 					<meta name="og:title" content="Currency Converter"/>
-					<meta name="og:description" content="Simple currency converter, that works offline!"/>
+					<meta name="og:description" content="Easily convert between 32 currencies"/>
 					<meta name="og:url" content="https://currency-converter.now.sh"/>
 					<meta name="og:site_name" content="Currency Converter"/>
 					<meta name="og:type" content="website"/>
@@ -134,7 +108,7 @@ export default class MyDocument extends Document {
 						rel="apple-touch-startup-image"
 						href="/apple-splash-1136-640.png"
 						media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/>
-					<link crossOrigin="true" href="https://storage.googleapis.com" rel="preconnect"/>
+					<link rel="preload" href="https://api.exchangeratesapi.io/latest" as="fetch" crossOrigin="anonymous"/>
 				</Head>
 				<body>
 					<Main/>
