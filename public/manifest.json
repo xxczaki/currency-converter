@@ -3,12 +3,12 @@
 	"short_name": "Converter",
 	"icons": [
 		{
-			"src": "/static/favicon-small.png",
+			"src": "/public/favicon-small.png",
 			"sizes": "192x192",
 			"type": "image/png"
 		},
 		{
-			"src": "/static/favicon.png",
+			"src": "/public/favicon.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		}
