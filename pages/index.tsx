@@ -64,7 +64,7 @@ const Index: NextPage<Props> = (props: Props) => {
 		}
 
 		const cashify = new Cashify({base: 'EUR', rates: data?.rates});
-		const output = cashify.convert(amount, {from: from?.value, to: to?.value});
+		const output = cashify.convert(Number(amount), {from: from?.value, to: to?.value});
 
 		setResult({
 			amount,
