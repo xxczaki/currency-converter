@@ -1,6 +1,6 @@
 # Currency Converter 💰
 
-> Simple currency converter build with React & Next.js.
+> Easily convert between 32 currencies
 
 
 [![Build Status](https://travis-ci.org/xxczaki/currency-converter.svg?branch=master)](https://travis-ci.org/xxczaki/currency-converter)
@@ -15,6 +15,7 @@
 - Does not require any API keys
 - Uses the open-source [Exchange Rates API](http://exchangeratesapi.io)
 - Works offline (PWA)
+- Features SSR data fetching
 - Written in TypeScript
 
 ## Development
