@@ -14,12 +14,21 @@ import {
 	Button,
 	Spinner
 } from '@chakra-ui/core';
-import Select from 'react-select';
 import {Cashify} from 'cashify';
+import currency from 'currency.js';
+
 import {fetcher, ResponseObject} from '../utils/fetcher';
 import {options, customStyles} from '../utils/select';
 
 import Container from '../components/container';
+
+const Select = dynamic(
+	async () => import('react-select'),
+	{
+		ssr: false,
+		loading: () => null
+	}
+);
 
 const ResultBox = dynamic(
 	async () => import('../components/result-box'),
@@ -59,7 +68,7 @@ const Index: NextPage<Props> = (props: Props) => {
 	useEffect(() => {
 		const {amount, from, to} = watch();
 
-		if (!amount || !from || !to) {
+		if ((!amount || !from || !to) && !result) {
 			return;
 		}
 
@@ -70,7 +79,7 @@ const Index: NextPage<Props> = (props: Props) => {
 			amount,
 			from: from?.value,
 			to: to?.value,
-			result: output.toPrecision(3)
+			result: currency(output).format()
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [amountValue, fromValue, toValue]);
@@ -112,7 +121,7 @@ const Index: NextPage<Props> = (props: Props) => {
 					<Controller as={Select} name="to" control={control} styles={customStyles} options={options}/>
 				</FormControl>
 				<Box borderWidth="1px" rounded="lg" padding={10} textAlign="center">
-					{result?.result ?
+					{result?.result && result.amount ?
 						<ResultBox
 							amount={result.amount}
 							from={result.from}
