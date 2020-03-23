@@ -20,7 +20,7 @@
 
 ## Development
 
-> Hosted with [now Δ](https://zeit.com/now)
+> Hosted with [now Δ](https://zeit.co/)
 
 ```
 # Install dependencies
