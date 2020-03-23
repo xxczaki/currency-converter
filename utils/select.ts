@@ -77,7 +77,8 @@ export const customStyles = {
 		'&:hover': {
 			borderColor: 'rgba(255,255,255,0.08)'
 		},
-		marginBottom: '1em'
+		marginBottom: '1em',
+		height: '40px'
 	}),
 	menu: (base: OptionTypeBase) => ({
 		...base,
