@@ -64,7 +64,8 @@
             "import/extensions": "off",
 			"unicorn/string-content": "off",
 			"@typescript-eslint/no-unsafe-return": "off",
-			"@typescript-eslint/prefer-readonly-parameter-types": "off"
+			"@typescript-eslint/prefer-readonly-parameter-types": "off",
+			"@typescript-eslint/no-unsafe-call": "off"
         },
         "settings": {
             "react": {
