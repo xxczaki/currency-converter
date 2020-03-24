@@ -113,12 +113,12 @@ const Index: NextPage<Props> = (props: Props) => {
 				</FormControl>
 				<FormControl>
 					<FormLabel htmlFor="from">From</FormLabel>
-					<Controller as={Select} name="from" control={control} styles={customStyles} options={options}/>
+					<Controller as={Select} id="from" name="from" control={control} styles={customStyles} options={options}/>
 				</FormControl>
 				<Button leftIcon="repeat" variant="ghost" onClick={() => swap()}>Swap</Button>
 				<FormControl>
 					<FormLabel htmlFor="to">To</FormLabel>
-					<Controller as={Select} name="to" control={control} styles={customStyles} options={options}/>
+					<Controller as={Select} id="to" name="to" control={control} styles={customStyles} options={options}/>
 				</FormControl>
 				<Box borderWidth="1px" rounded="lg" padding={10} textAlign="center">
 					{result?.result && result.amount ?

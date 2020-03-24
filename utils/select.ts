@@ -84,19 +84,23 @@ export const customStyles = {
 		...base,
 		background: '#272d38'
 	}),
-	input: (base: any) => ({
+	input: (base: OptionTypeBase) => ({
 		...base,
 		color: 'white'
 	}),
-	singleValue: (base: any) => ({
+	singleValue: (base: OptionTypeBase) => ({
 		...base,
 		color: 'white'
 	}),
-	option: (base: any) => ({
+	option: (base: OptionTypeBase) => ({
 		...base,
 		background: '#272d38',
 		'&:hover': {
 			background: '#353d4c'
 		}
+	}),
+	placeholder: (base: OptionTypeBase) => ({
+		...base,
+		color: '#565a57'
 	})
 };
