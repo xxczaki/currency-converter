@@ -41,11 +41,20 @@ interface Props {
 
 interface FormData {
 	amount: number;
-	from: string;
-	to: string;
+	from: {
+		value: string;
+		label: string;
+	};
+	to: {
+		value: string;
+		label: string;
+	};
 }
 
-interface Result extends FormData {
+interface Result {
+	amount: number;
+	from: string;
+	to: string;
 	result: string;
 }
 
@@ -67,6 +76,7 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 
 	useEffect(() => {
 		const {amount, from, to} = watch();
+		console.log(from);
 
 		if ((!amount || !from || !to) && !result) {
 			return;
@@ -113,12 +123,12 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 				</FormControl>
 				<FormControl>
 					<FormLabel htmlFor="from">From</FormLabel>
-					<Controller as={Select} id="from" name="from" control={control} styles={customStyles} options={options}/>
+					<Controller as={Select} name="from" control={control} styles={customStyles} options={options}/>
 				</FormControl>
 				<Button leftIcon="repeat" variant="ghost" onClick={() => swap()}>Swap</Button>
 				<FormControl>
 					<FormLabel htmlFor="to">To</FormLabel>
-					<Controller as={Select} id="to" name="to" control={control} styles={customStyles} options={options}/>
+					<Controller as={Select} name="to" control={control} styles={customStyles} options={options}/>
 				</FormControl>
 				<Box borderWidth="1px" rounded="lg" padding={10} textAlign="center">
 					{result?.result && result.amount ?
