@@ -101,6 +101,6 @@ export const customStyles = {
 	}),
 	placeholder: (base: Readonly<OptionTypeBase>) => ({
 		...base,
-		color: '#565a57'
+		color: 'inherit'
 	})
 };
