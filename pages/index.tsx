@@ -41,8 +41,8 @@ interface Props {
 
 interface FormData {
 	amount: number;
-	from: any;
-	to: any;
+	from: string;
+	to: string;
 }
 
 interface Result extends FormData {
@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	return {props: {data}};
 };
 
-const Index: NextPage<Props> = (props: Props) => {
+const Index: NextPage<Props> = (props: Readonly<Props>) => {
 	const initialData = props.data;
 
 	const [result, setResult] = useState<Result | undefined>(undefined);

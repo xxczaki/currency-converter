@@ -51,7 +51,7 @@ const globalStyle = css`
 	}
 `;
 
-const myApp = ({Component, pageProps}: AppProps): JSX.Element => (
+const myApp = ({Component, pageProps}: Readonly<AppProps>): JSX.Element => (
 	<ThemeProvider theme={customTheme}>
 		<DarkMode>
 			<CSSReset/>

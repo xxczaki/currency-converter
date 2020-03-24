@@ -14,7 +14,7 @@ interface Props {
 	result: string;
 }
 
-const ResultBox = ({amount, from, to, result}: Props): JSX.Element => (
+const ResultBox = ({amount, from, to, result}: Readonly<Props>): JSX.Element => (
 	<Stat textAlign="left">
 		<StatLabel>{amount} {from} equals</StatLabel>
 		<StatNumber>{result} {to}</StatNumber>

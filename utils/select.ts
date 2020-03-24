@@ -70,7 +70,7 @@ export const options = [
 ];
 
 export const customStyles = {
-	control: (base: OptionTypeBase, state: ClassNamesState) => ({
+	control: (base: Readonly<OptionTypeBase>, state: ClassNamesState) => ({
 		...base,
 		background: '#272d38',
 		borderColor: state?.isFocused ? '#3182ce' : 'rgba(255,255,255,0.04)',
@@ -80,26 +80,26 @@ export const customStyles = {
 		marginBottom: '1em',
 		height: '40px'
 	}),
-	menu: (base: OptionTypeBase) => ({
+	menu: (base: Readonly<OptionTypeBase>) => ({
 		...base,
 		background: '#272d38'
 	}),
-	input: (base: OptionTypeBase) => ({
+	input: (base: Readonly<OptionTypeBase>) => ({
 		...base,
 		color: 'white'
 	}),
-	singleValue: (base: OptionTypeBase) => ({
+	singleValue: (base: Readonly<OptionTypeBase>) => ({
 		...base,
 		color: 'white'
 	}),
-	option: (base: OptionTypeBase) => ({
+	option: (base: Readonly<OptionTypeBase>) => ({
 		...base,
 		background: '#272d38',
 		'&:hover': {
 			background: '#353d4c'
 		}
 	}),
-	placeholder: (base: OptionTypeBase) => ({
+	placeholder: (base: Readonly<OptionTypeBase>) => ({
 		...base,
 		color: '#565a57'
 	})
