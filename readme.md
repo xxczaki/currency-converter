@@ -15,7 +15,7 @@
 - Does not require any API keys
 - Uses the open-source [Exchange Rates API](http://exchangeratesapi.io)
 - Works offline (PWA)
-- Features SSR data fetching
+- Features SSG data fetching
 - Written in TypeScript
 
 ## Development
