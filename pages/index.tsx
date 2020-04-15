@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {NextPage, GetServerSideProps} from 'next';
+import {NextPage, GetStaticProps} from 'next';
 import dynamic from 'next/dynamic';
 import {useForm, Controller} from 'react-hook-form';
 import useSWR from 'swr';
@@ -58,7 +58,7 @@ interface Result {
 	result: string;
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const data = await fetcher();
 	return {props: {data}};
 };
@@ -119,6 +119,8 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 						pattern="[0-9]*"
 						name="amount"
 						placeholder="Amount"
+						// @ts-ignore
+						enterkeyhint="go"
 					/>
 				</FormControl>
 				<FormControl>
